@@ -1,5 +1,9 @@
-obj-m += simple.o
+obj-m:=simple.o
+CURRENT_PATH:=$(shell pwd)
+LINUX_KERNEL_PATH:=/usr/src/linux-headers-5.4.0-42-generic
 all:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C  $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) modules
 clean:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	make -C  $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) clean
+
+
